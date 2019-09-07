@@ -1,24 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import UserParticipationForm from './components/user-participation-form.component'
+import CircleGraph from './components/circle-graph.component';
+import UserTable from './components/user-table.component';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <UserParticipationForm />
+      </div>
+      <div>
+        <h2>Data</h2>
+        <p>lorem ipsum solem</p>
+      </div>
+      <div className="data-row">
+        <UserTable width="50%" />
+        <CircleGraph width="50%" />
+      </div>
     </div>
   );
 }
