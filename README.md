@@ -1,3 +1,10 @@
+## To Run Backend
+First modify the .env with your mongoDB connection
+
+navigate to the backend director in the project and run:
+
+### nodemon server
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
