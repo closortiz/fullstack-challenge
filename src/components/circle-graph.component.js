@@ -41,8 +41,7 @@ export default class CircleGraph extends Component {
 
   render() {
     return (
-      <div width="50%" >
-        <div className={"my-pretty-chart-container"}>
+        <div className={"my-pretty-chart-container"} >
           <Chart
             chartType="PieChart"
             data={this.state.data}
@@ -51,7 +50,6 @@ export default class CircleGraph extends Component {
             height="400px"
           />
         </div>
-      </div>
     )
   }
 }

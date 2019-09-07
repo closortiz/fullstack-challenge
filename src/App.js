@@ -3,6 +3,7 @@ import './App.css';
 import UserParticipationForm from './components/user-participation-form.component'
 import CircleGraph from './components/circle-graph.component';
 import UserTable from './components/user-table.component';
+import Grid from '@material-ui/core/Grid'
 
 
 function App() {
@@ -15,10 +16,14 @@ function App() {
         <h2>Data</h2>
         <p>lorem ipsum solem</p>
       </div>
-      <div className="data-row">
-        <UserTable width="50%" />
-        <CircleGraph width="50%" />
-      </div>
+      <Grid container
+        direction="row"
+        justify="space-evenly"
+        alignItems="stretch"
+      >
+        <UserTable />
+        <CircleGraph />
+      </Grid>
     </div>
   );
 }

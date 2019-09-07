@@ -1,5 +1,12 @@
 .App {
   text-align: center;
+  font-family: "Roboto";
+}
+
+.react-grid-Container{
+  width: 400px!important;
+  display: block;
+  margin: 0;
 }
 
 .user-form{
