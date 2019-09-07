@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Chart } from "react-google-charts";
+import { properties } from '../properties';
 import axios from "axios";
 
 const options = {
@@ -8,6 +9,7 @@ const options = {
   is3D: false
 };
 
+/* Circle Graph component shows the total particapation across all users */
 export default class CircleGraph extends Component {
   constructor(props) {
     super(props);
@@ -22,8 +24,9 @@ export default class CircleGraph extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/users/')
+    axios.get(properties.GET_ALL_USERS_URL)
       .then(response => {
+        console.log("found users in circle graph ")
         this.setState({ users: response.data });
         this.createData();
       })
@@ -33,7 +36,7 @@ export default class CircleGraph extends Component {
   }
 
   createData(){
-    this.state.users.map(user => {
+    this.state.users.forEach(user => {
         this.state.data.push([user.firstName + " " + user.lastName,user.participation])
     })
   }

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import { useAlert } from 'react-alert'
 
-
+const PARTICIPATION_STATE_URL = "http://localhost:5000/users/state";
+const ADD_NEW_USER_URL = "http://localhost:5000/users/add";
 export default class UserParticipationForm extends Component {
 
   constructor(props) {
@@ -49,18 +49,21 @@ export default class UserParticipationForm extends Component {
     }
 
     if (user.participation > 100) {
-      alert("user participation cannot exceed 100%");
+      this.setState({
+        errorText: "User participation cannot exceed 100%"
+      })
       return;
     }
 
-    axios.get("http://localhost:5000/users/state")
+    axios.get(PARTICIPATION_STATE_URL)
       .then(res => {
         if (res.data[0] !== undefined && (res.data[0].sum >= 100 || (Number(res.data[0].sum) + Number(user.participation)) > 100)) {
-          alert("total participation amongst users cannot be more than 100%")
+          this.setState({
+            errorText: "Total capacity is: " + res.data[0].sum  + ". The total participation amongst users cannot be more than 100%"
+          })
         } else {
-          axios.post("http://localhost:5000/users/add", user)
+          axios.post(ADD_NEW_USER_URL, user)
             .then(res => {
-              console.log(res.data)
               window.location = "/";
             });
         }
@@ -108,7 +111,7 @@ export default class UserParticipationForm extends Component {
           </form>
         </div>
         <div>
-          <p>{this.state.errorText}</p>
+          <p style={{color:"red"}}>{this.state.errorText}</p>
         </div>
       </div>
     )

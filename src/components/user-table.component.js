@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDataGrid from "react-data-grid";
+import { properties } from '../properties';
 import axios from 'axios'
 
 const defaultColumnProperties = {
@@ -25,7 +26,7 @@ export default class UserTable extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/users/')
+    axios.get(properties.GET_ALL_USERS_URL)
       .then(response => {
         this.setState({ rows: response.data })
       })
